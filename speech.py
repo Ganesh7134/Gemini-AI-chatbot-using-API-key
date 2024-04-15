@@ -4,7 +4,12 @@ import os
 import json
 from streamlit_lottie import st_lottie
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAM_VBEDuud6PEmN5kB-KhUAry5L7UYifc"
+API = []
+with st.sidebar:
+    text = st.text_input("Insert your generative_ai API key here to communicate with chatbot: ",type="password")
+    API.append(text)
+# st.write(API)
+os.environ["GOOGLE_API_KEY"] = API[-1]
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 container = st.container()
